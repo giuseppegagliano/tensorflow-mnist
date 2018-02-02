@@ -123,6 +123,8 @@ def main(unused_argv):
   eval_data = mnist.test.images  # Returns np.array
   eval_labels = np.asarray(mnist.test.labels, dtype=np.int32)
 
+  import time
+  exe_time = time.time()
   # Create the Estimator
   mnist_classifier = tf.estimator.Estimator(
       model_fn=cnn_model_fn, model_dir="/tmp/mnist_convnet_model")
@@ -153,6 +155,7 @@ def main(unused_argv):
       shuffle=False)
   eval_results = mnist_classifier.evaluate(input_fn=eval_input_fn)
   print(eval_results)
+  print("######### Execution time is:", (time.time() - exe_time))
 
 
 if __name__ == "__main__":
