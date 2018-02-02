@@ -159,4 +159,7 @@ def main(unused_argv):
 
 
 if __name__ == "__main__":
+  from tensorflow.python.framework import ops
+  ops.reset_default_graph()
+  sess = tf.InteractiveSession()
   tf.app.run()
